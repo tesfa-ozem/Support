@@ -9,13 +9,25 @@ namespace Support.Repository
     public class Repo
     {
         UhcContext _context = new UhcContext();
-        public PaymentModel GetAllPaymentsAsync()
+        public  PaymentModel GetAllPaymentsAsync(string searchString)
         {
             try
                 {
                 var Payments = from s in _context.Payments
                 select s;
-                 return new PaymentModel()
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    Payments = Payments.Where(s => s.DocumentNo.ToUpper().Contains(searchString.ToUpper())
+                               || s.PhoneNo.ToUpper().Contains(searchString.ToUpper())
+                               || s.AccountNo.ToUpper().Contains(searchString.ToUpper())
+                               || s.PaymentName.ToUpper().Contains(searchString.ToUpper()));
+                               return  new PaymentModel()
+                {
+                    ListOfPayments = Payments.ToList(),
+                    Message = " Succesfull"
+                };
+                }
+                return  new PaymentModel()
                 {
                     ListOfPayments = Payments.ToList(),
                     Message = " Succesfull"

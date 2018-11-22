@@ -11,10 +11,10 @@ namespace Support.Controllers
     {
         private readonly UhcContext context;
         [HttpPost]
-        public IActionResult GetPaymentsAsync()
+        public IActionResult GetPaymentsAsync( string searchString = "")
         {
             Repo repo = new Repo();
-            var ListOfPeople = repo.GetAllPaymentsAsync();
+            var ListOfPeople = repo.GetAllPaymentsAsync(searchString);
             return Ok(ListOfPeople);
         }
         [HttpPost]
