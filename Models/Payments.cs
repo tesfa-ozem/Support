@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Support.Repository;
 
 namespace Support.Models
 {
@@ -26,7 +27,7 @@ namespace Support.Models
     }
     public class PaymentModel
     {
-        public List<Payments> ListOfPayments { get; set; }
+        public PaginatedList<Payments> ListOfPayments { get; set; }
         public String Message { get; set; }
     }
     public class PaymentViewModel

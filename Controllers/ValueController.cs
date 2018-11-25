@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Support.Models;
 using Support.Persistence;
 using Support.Repository;
-
+using System.Threading.Tasks;
 namespace Support.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -11,10 +11,11 @@ namespace Support.Controllers
     {
         private readonly UhcContext context;
         [HttpPost]
-        public IActionResult GetPaymentsAsync( string searchString = "")
+        public async Task<IActionResult> GetPaymentsAsync([FromBody]PaginationArg arg)
         {
+            
             Repo repo = new Repo();
-            var ListOfPeople = repo.GetAllPaymentsAsync(searchString);
+            var ListOfPeople = await repo.GetAllPaymentsAsync(arg);
             return Ok(ListOfPeople);
         }
         [HttpPost]
@@ -38,5 +39,9 @@ namespace Support.Controllers
             repo.CreatePayment(payments);
             return Ok();
         }
+    }
+    public class SearchStr
+    {
+          public string SearchValue { get; set; }  
     }
 }

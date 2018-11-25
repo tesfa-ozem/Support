@@ -9,27 +9,33 @@ namespace Support.Repository
     public class Repo
     {
         UhcContext _context = new UhcContext();
-        public  PaymentModel GetAllPaymentsAsync(string searchString)
+        public async Task<PaymentModel> GetAllPaymentsAsync(PaginationArg arg)
         {
             try
                 {
+                if (arg.searchString != null)
+                {
+                    arg.page = 1;
+                }
+                else
+                {
+                    arg.searchString = arg.currentFilter;
+                }
                 var Payments = from s in _context.Payments
                 select s;
-                if (!String.IsNullOrEmpty(searchString))
+                if (!String.IsNullOrEmpty(arg.searchString))
                 {
-                    Payments = Payments.Where(s => s.DocumentNo.ToUpper().Contains(searchString.ToUpper())
-                               || s.PhoneNo.ToUpper().Contains(searchString.ToUpper())
-                               || s.AccountNo.ToUpper().Contains(searchString.ToUpper())
-                               || s.PaymentName.ToUpper().Contains(searchString.ToUpper()));
-                               return  new PaymentModel()
-                {
-                    ListOfPayments = Payments.ToList(),
-                    Message = " Succesfull"
-                };
+                    Payments = Payments.Where(s => s.DocumentNo.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.PhoneNo.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.AccountNo.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.PaymentName.ToUpper().Contains(arg.searchString.ToUpper()));
+                               
+               
                 }
+                int pageSize = 5;
                 return  new PaymentModel()
                 {
-                    ListOfPayments = Payments.ToList(),
+                    ListOfPayments = await PaginatedList<Payments>.CreateAsync(Payments, arg.page ?? 1, pageSize),
                     Message = " Succesfull"
                 };
                 }
@@ -105,5 +111,11 @@ namespace Support.Repository
                 return e.Message.ToString();
             }
         }
+        
     }
+
+    public class SearchStr
+    {
+          public string SearchValue { get; set; }  
+    }  
 }
