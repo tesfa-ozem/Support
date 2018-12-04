@@ -1,0 +1,14 @@
+C:\Users\Tesfa\source\Support\Support\bin\Release\netcoreapp2.1\Support.deps.json
+C:\Users\Tesfa\source\Support\Support\bin\Release\netcoreapp2.1\Support.runtimeconfig.json
+C:\Users\Tesfa\source\Support\Support\bin\Release\netcoreapp2.1\Support.runtimeconfig.dev.json
+C:\Users\Tesfa\source\Support\Support\bin\Release\netcoreapp2.1\Support.dll
+C:\Users\Tesfa\source\Support\Support\bin\Release\netcoreapp2.1\Support.pdb
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.csproj.CoreCompileInputs.cache
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.RazorAssemblyInfo.cache
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.RazorAssemblyInfo.cs
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.AssemblyInfoInputs.cache
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.AssemblyInfo.cs
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.RazorTargetAssemblyInfo.cache
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.dll
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.pdb
+C:\Users\Tesfa\source\Support\Support\obj\Release\netcoreapp2.1\Support.csprojAssemblyReference.cache

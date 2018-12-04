@@ -32,6 +32,7 @@ namespace Support.Repository
                                
                
                 }
+                    
                 int pageSize = 5;
                 return  new PaymentModel()
                 {
@@ -82,6 +83,7 @@ namespace Support.Repository
         {
             try
             {
+               
                 var NewPayment = new Payments()
                 {
                     PaymentMode = "Mpesa",
@@ -89,17 +91,18 @@ namespace Support.Repository
                     MemberNo = payments.AccountNo,
                     PhoneNo = payments.PhoneNo,
                     AccountNo = payments.AccountNo,
+                    PaymentName = payments.PaymentName,
                     Amount = 1100,
                     Status = 1,
                     DocumentNo = payments.DocumentNo,
                     Description = "Created Manualy",
-                    PaymentDate = payments.PaymentDate,
-                    TransactionDate = payments.PaymentDate,
-                    DateModified = payments.PaymentDate
+                    TransactionDate = DateTime.Now,
+                    PaymentDate = DateTime.Now,
+                    DateModified = DateTime.Now
 
                     
 
-
+      
                 };
                 _context.Add(NewPayment);
                 _context.SaveChanges();

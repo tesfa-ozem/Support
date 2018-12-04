@@ -5289,7 +5289,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
+      "sha512": "sa/cztXesLyTgCiYuef0RK2EAImnak0w2wrjCh/YBTvbn4iV2eTy0q3F8CyUkGiaYEyxUKGVTko6+7SMRBL4Gg==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "files": [
@@ -11734,23 +11734,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jeremy\\.nuget\\packages\\": {},
+    "C:\\Users\\Tesfa\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Tesfa\\Support\\Support.csproj",
+      "projectUniqueName": "C:\\Users\\Tesfa\\source\\Support\\Support\\Support.csproj",
       "projectName": "Support",
-      "projectPath": "D:\\Tesfa\\Support\\Support.csproj",
-      "packagesPath": "C:\\Users\\Jeremy\\.nuget\\packages\\",
-      "outputPath": "D:\\Tesfa\\Support\\obj\\",
+      "projectPath": "C:\\Users\\Tesfa\\source\\Support\\Support\\Support.csproj",
+      "packagesPath": "C:\\Users\\Tesfa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tesfa\\source\\Support\\Support\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jeremy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tesfa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
