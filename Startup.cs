@@ -33,6 +33,7 @@ namespace Support
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<UhcContext>(options=>options
             .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddSwaggerDocument();
             services.AddCors(options =>
             {
@@ -62,6 +63,7 @@ namespace Support
             }
             app.UseCors("AllowAll");
             app.UseHttpsRedirection();
+            
             app.UseMvc();
             app.UseSwagger(); // Serves the registered OpenAPI/Swagger documents by default on `/swagger/{documentName}/swagger.json`
             app.UseSwaggerUi3();

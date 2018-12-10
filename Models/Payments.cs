@@ -27,6 +27,7 @@ namespace Support.Models
     }
     public class PaymentModel
     {
+        public List<Payments> Existing { get; set; }
         public PaginatedList<Payments> ListOfPayments { get; set; }
         public String Message { get; set; }
     }

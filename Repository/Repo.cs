@@ -3,12 +3,32 @@ using Support.Models;
 using Support.Persistence;
 using System.Linq;
 using System.Threading.Tasks;
+using OfficeOpenXml;
+using System.Text;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Support.Repository
 {
     public class Repo
     {
         UhcContext _context = new UhcContext();
+        public static string GetUniqueKey(int size)
+        {
+            char[] chars =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+            byte[] data = new byte[size];
+            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+            {
+                crypto.GetBytes(data);
+            }
+            StringBuilder result = new StringBuilder(size);
+            foreach (byte b in data)
+            {
+                result.Append(chars[b % (chars.Length)]);
+            }
+            return ("FSA"+result.ToString());
+        }
         public async Task<PaymentModel> GetAllPaymentsAsync(PaginationArg arg)
         {
             try
@@ -96,9 +116,9 @@ namespace Support.Repository
                     Status = 1,
                     DocumentNo = payments.DocumentNo,
                     Description = "Created Manualy",
-                    TransactionDate = DateTime.Now,
-                    PaymentDate = DateTime.Now,
-                    DateModified = DateTime.Now
+                    TransactionDate = payments.PaymentDate,
+                    PaymentDate = payments.PaymentDate,
+                    DateModified = payments.PaymentDate
 
                     
 
@@ -114,7 +134,93 @@ namespace Support.Repository
                 return e.Message.ToString();
             }
         }
-        
+        public PaymentModel readExcelPackageToStringBulk(ExcelPackage package, ExcelWorksheet worksheet,DateTime dateTime)
+        {
+            try
+            {
+
+                UhcContext _context = new UhcContext();
+                var rowCount = worksheet.Dimension?.Rows;
+                var colCount = worksheet.Dimension?.Columns;
+
+                if (!rowCount.HasValue || !colCount.HasValue)
+                {
+                    return new PaymentModel()
+                    {
+                        Message = "No file"
+                    };
+                }
+                List<Payments> FsaPayments = new List<Payments>();
+                List<Payments> Existing = new List<Payments>();
+                var sb = new StringBuilder();
+                for (int row = 3; row <= rowCount.Value; row++)
+                {
+                   
+                    try
+                    {
+                        Payments payments = new Payments()
+                        {
+                            PaymentName = worksheet.Cells[row, 2].Value.ToString(),
+                            AccountNo = worksheet.Cells[row, 3].Value.ToString(),
+                            MemberNo = worksheet.Cells[row, 3].Value.ToString(),
+                            PhoneNo = (worksheet.Cells[row, 4].Value==null)?null: worksheet.Cells[row, 4].Value.ToString(),
+                            PaymentType = "Cheque",
+                            PaymentMode = "Cheque",
+                            Amount = 1100,
+                            Status = 1,
+                            DocumentNo = GetUniqueKey(5),
+                            Description = worksheet.Cells[row, 5].Value.ToString(),
+                            TransactionDate = dateTime,
+                            PaymentDate = dateTime,
+                            DateModified = dateTime
+
+                        };
+                        var paymentId = _context.Payments.Where(e => e.AccountNo == payments.AccountNo).FirstOrDefault();
+
+                        if (paymentId==null|| payments.PhoneNo!=null)
+                        {
+                            FsaPayments.Add(payments);
+                        }
+                        else
+                        {
+                            Existing.Add(payments);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new PaymentModel()
+                        {
+                            Message = e.Message.ToString()
+                        };
+
+                    }
+
+                  
+
+                }
+                _context.Payments.AddRangeAsync(FsaPayments);
+
+                _context.SaveChanges();
+                return new PaymentModel()
+                {
+                    Message = "Sucessfull",
+                    Existing = Existing,
+                    
+                };
+            }
+            catch (Exception e)
+            {
+
+                return new PaymentModel()
+                {
+                    Message = e.Message.ToString(),
+                    
+
+                };
+
+            }
+        }
+
     }
 
     public class SearchStr

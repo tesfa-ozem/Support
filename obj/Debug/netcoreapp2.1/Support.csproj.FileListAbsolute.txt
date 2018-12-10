@@ -26,3 +26,17 @@ C:\Users\Tesfa\source\Support\Support\obj\Debug\netcoreapp2.1\Support.dll
 C:\Users\Tesfa\source\Support\Support\obj\Debug\netcoreapp2.1\Support.pdb
 C:\Users\Tesfa\source\Support\Support\obj\Debug\netcoreapp2.1\Support.csprojAssemblyReference.cache
 C:\Users\Tesfa\source\Support\Support\bin\Debug\netcoreapp2.1\Support.pdb
+D:\Supportapi\Support\bin\Debug\netcoreapp2.1\Support.deps.json
+D:\Supportapi\Support\bin\Debug\netcoreapp2.1\Support.runtimeconfig.json
+D:\Supportapi\Support\bin\Debug\netcoreapp2.1\Support.runtimeconfig.dev.json
+D:\Supportapi\Support\bin\Debug\netcoreapp2.1\Support.dll
+D:\Supportapi\Support\bin\Debug\netcoreapp2.1\Support.pdb
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.csprojAssemblyReference.cache
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.csproj.CoreCompileInputs.cache
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.RazorAssemblyInfo.cache
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.RazorAssemblyInfo.cs
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.AssemblyInfoInputs.cache
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.AssemblyInfo.cs
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.RazorTargetAssemblyInfo.cache
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.dll
+D:\Supportapi\Support\obj\Debug\netcoreapp2.1\Support.pdb
