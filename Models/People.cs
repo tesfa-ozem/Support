@@ -52,9 +52,7 @@ namespace Support.Models
         public string IdentificationNo { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string Signature { get; set; }
-        public string LeftThumb { get; set; }
-        public string RightThumb { get; set; }
+        
         public string PhotoImage { get; set; }
         public DateTime DateCreated { get; set; }
         public string ModifiedBy { get; set; }
@@ -66,7 +64,7 @@ namespace Support.Models
     public class PeopleModel
     {
         public List<PeopleViewModel> ExistingPerson { get; set; }
-        public PaginatedList<People> ListOfPeople { get; set; }
+        public PaginatedList<PeopleViewModel> ListOfPeople { get; set; }
         public String Message { get; set; }
     }
 }

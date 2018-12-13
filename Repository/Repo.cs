@@ -224,6 +224,7 @@ namespace Support.Repository
         {
             try
             {
+                List<PeopleViewModel> AllPeople = new List<PeopleViewModel>();
                 if (arg.searchString != null)
                 {
                     arg.page = 1;
@@ -247,9 +248,26 @@ namespace Support.Repository
                 }
                     
                 int pageSize = 5;
+                foreach (var item in person)
+                {
+                    var OnePerson = new PeopleViewModel()
+                    {
+                        FirstName = item.FirstName,
+                        MiddleName = item.MiddleName,
+                        LastName = item.LastName,
+                        IdentificationNo =item.IdentificationNo,
+                        PhoneNumber = item.PhoneNumber,
+                        DateOfBirth = item.DateOfBirth,
+                        PhotoImage = item.PhotoImage,
+                        DateCreated = item.DateCreated,
+                        ModifiedBy = item.ModifiedBy,
+                        MemberNo = item.MemberNo
+                    };
+                    AllPeople.Add(OnePerson);
+                }
                 return  new PeopleModel()
                 {
-                    ListOfPeople = await PaginatedList<People>.CreateAsync(person, arg.page ?? 1, pageSize),
+                    ListOfPeople = await PaginatedList<PeopleViewModel>.CreateAsync(AllPeople.AsQueryable(), arg.page ?? 1, pageSize),
                     Message = " Succesfull"
                 };
                 }
