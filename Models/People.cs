@@ -64,7 +64,7 @@ namespace Support.Models
     public class PeopleModel
     {
         public List<PeopleViewModel> ExistingPerson { get; set; }
-        public PaginatedList<PeopleViewModel> ListOfPeople { get; set; }
+        public List<PeopleViewModel> ListOfPeople { get; set; }
         public String Message { get; set; }
     }
 }

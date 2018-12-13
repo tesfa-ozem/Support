@@ -248,7 +248,8 @@ namespace Support.Repository
                 }
                     
                 int pageSize = 5;
-                foreach (var item in person)
+                var GroupOfPeople = await PaginatedList<People>.CreateAsync(person, arg.page ?? 1, pageSize);
+                foreach (var item in GroupOfPeople)
                 {
                     var OnePerson = new PeopleViewModel()
                     {
@@ -267,7 +268,7 @@ namespace Support.Repository
                 }
                 return  new PeopleModel()
                 {
-                    ListOfPeople = await PaginatedList<PeopleViewModel>.CreateAsync(AllPeople.AsQueryable(), arg.page ?? 1, pageSize),
+                    ListOfPeople = AllPeople,
                     Message = " Succesfull"
                 };
                 }
