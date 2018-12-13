@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Support.Repository;
 
 namespace Support.Models
 {
@@ -42,5 +43,30 @@ namespace Support.Models
         public Dependants Dependants { get; set; }
         public Principals Principals { get; set; }
         public Spouses Spouses { get; set; }
+    }
+    public class PeopleViewModel
+    {
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string IdentificationNo { get; set; }
+        public string PhoneNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Signature { get; set; }
+        public string LeftThumb { get; set; }
+        public string RightThumb { get; set; }
+        public string PhotoImage { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string ModifiedBy { get; set; }
+        public DateTime DateModified { get; set; }
+        public string MemberNo { get; set; }
+        public Dependants Dependants { get; set; }
+        public Spouses Spouses { get; set; }
+    }
+    public class PeopleModel
+    {
+        public List<PeopleViewModel> ExistingPerson { get; set; }
+        public PaginatedList<People> ListOfPeople { get; set; }
+        public String Message { get; set; }
     }
 }

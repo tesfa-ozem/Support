@@ -70,6 +70,14 @@ namespace Support.Controllers
 
             return Ok(payments);
         }
+        [HttpPost]
+        public async Task<IActionResult> GetPeople([FromBody]PaginationArg arg)
+        {
+            
+            Repo repo = new Repo();
+            var ListOfPeople = await repo.GetAllPeople(arg);
+            return Ok(ListOfPeople);
+        }
 
     }
     public class SearchStr

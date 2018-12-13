@@ -220,7 +220,49 @@ namespace Support.Repository
 
             }
         }
-
+        public async Task<PeopleModel> GetAllPeople(PaginationArg arg)
+        {
+            try
+            {
+                if (arg.searchString != null)
+                {
+                    arg.page = 1;
+                }
+                else
+                {
+                    arg.searchString = arg.currentFilter;
+                }
+                var person= from s in _context.People
+                select s;
+                if (!String.IsNullOrEmpty(arg.searchString))
+                {
+                    person = person.Where(s => s.IdentificationNo.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.PhoneNumber.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.MemberNo.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.LastName.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.FirstName.ToUpper().Contains(arg.searchString.ToUpper())
+                               || s.MiddleName.ToUpper().Contains(arg.searchString.ToUpper()));
+                               
+               
+                }
+                    
+                int pageSize = 5;
+                return  new PeopleModel()
+                {
+                    ListOfPeople = await PaginatedList<People>.CreateAsync(person, arg.page ?? 1, pageSize),
+                    Message = " Succesfull"
+                };
+                }
+                catch (Exception e)
+                {
+                    
+                    return new PeopleModel()
+                {
+                    ListOfPeople = null,
+                    Message = e.Message.ToString()
+                };
+                }
+        }
     }
 
     public class SearchStr

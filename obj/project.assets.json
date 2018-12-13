@@ -12243,11 +12243,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Supportapi\\Support\\Support.csproj",
+      "projectUniqueName": "D:\\Supportapi\\Support\\Support.csproj",
       "projectName": "Support",
-      "projectPath": "d:\\Supportapi\\Support\\Support.csproj",
+      "projectPath": "D:\\Supportapi\\Support\\Support.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "d:\\Supportapi\\Support\\obj\\",
+      "outputPath": "D:\\Supportapi\\Support\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
